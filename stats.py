@@ -1,4 +1,5 @@
 import pandas as pd
+from scipy import stats
 
 
 data = '''Region,Alcohol,Tobacco
@@ -25,12 +26,14 @@ df['Alcohol'] = df['Alcohol'].astype(float)
 df['Tobacco'] = df['Tobacco'].astype(float)
 
 alcoholtupes = (df['Alcohol'].mean(), df['Alcohol'].median(),
-               stats.mode(df['Alcohol']), (max(df['Alcohol'])-min(df['Alcohol'])),
+               stats.mode(df['Alcohol'])[0], 
+               (max(df['Alcohol'])-min(df['Alcohol'])),
                df['Alcohol'].var(), df['Alcohol'].std()
                )
 
 tobaccotupes = (df['Tobacco'].mean(), df['Tobacco'].median(),
-               stats.mode(df['Tobacco']), (max(df['Tobacco'])-min(df['Tobacco'])),
+               stats.mode(df['Tobacco'])[0], 
+               (max(df['Tobacco'])-min(df['Tobacco'])),
                df['Tobacco'].var(), df['Tobacco'].std()
                )
 
